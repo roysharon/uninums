@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script src="uninums.js"></script>
+	</head>
+	<body>
+	<script>
+test(undefined, NaN);
+test(null, NaN);
+test('', NaN);
+test(NaN, NaN);
+test({}, NaN);
+test([], NaN);
+test(/a/, NaN);
+test(3, 3);
+test(-3, -3);
+test('  ', NaN);
+test('  -', NaN);
+test('  123.4', 123);
+test('  -123.4', -123);
+test('\n٠۴६', 38);
+test('\n٠۴६', 46, 10);
+test4('٠۴.६', 4.6);
+
+
+test2(undefined, undefined);
+test2(null, null);
+test2('', '');
+test2(NaN, NaN);
+test2(3, 3);
+test2(-3, -3);
+test2('  ', '  ');
+test2('123.4', '123.4');
+test2('٠۴६', '046');
+
+test3(['22','-10',' 4'],['-10',' 4','22']);
+test3(['٠٠۴','-۴٠',' ६'],['-۴٠','٠٠۴',' ६']);
+
+function test(s,v,r) { var x; document.write('<div>parseUniInt('+(typeof(s)=='string'?"'"+s+"'":s)+(r?','+r:'')+')=='+(x=parseUniInt(s,r))+' '+(isNaN(x)&&isNaN(v)||x==v?'succeeded':'failed')+'</div>\n'); }
+function test2(s,v) { var a; document.write('<div>normalDigits('+(typeof(s)=='string'?"'"+s+"'":s)+')=='+(a=normalDigits(s))+' '+(isNaN(a)&&isNaN(v)||a==v?'succeeded':'failed')+'</div>\n'); }
+function test3(s,v) { var a; document.write('<div>sortNumeric(['+s.join(',')+'])=='); sortNumeric(s); document.write(s.join(',')+' '+(s.join(',')==v.join(',')?'succeeded':'failed')+'</div>\n'); }
+function test4(s,v) { var x; document.write('<div>parseUniFloat('+(typeof(s)=='string'?"'"+s+"'":s)+')=='+(x=parseUniFloat(s))+' '+(isNaN(x)&&isNaN(v)||x==v?'succeeded':'failed')+'</div>\n'); }
+	</script>
+	</body>
+</html>
