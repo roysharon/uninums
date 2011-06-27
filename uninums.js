@@ -1,4 +1,5 @@
 // Copyright (c) 2010 Roy Sharon <roy@roysharon.com>
+// See project repositry at <https://github.com/roysharon/uninums>
 // Using this file is subject to the MIT License <http://creativecommons.org/licenses/MIT/>
 
 (function(){
@@ -18,39 +19,40 @@
 	];
 	for (var i = Nd.length-1; i >= 0; --i) Nd[i] = new RegExp('['+Nd[i]+']', '');
 	
-	var Zs_and_friends = new RegExp('[\t\v\f \u00A0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\uFEFF]', '');
+	var Zs_and_friends = new RegExp('[ \t\v\f\u00A0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\uFEFF]', '');
 	
 	var line_terminators = new RegExp('\r\n|[\n\r\u2028\u2029]', '');
 	
-	window['normalSpaces'] =
 	function normalSpaces(s) {
 		return s ? s.toString().replace(Zs_and_friends, ' ').replace(line_terminators, '\n') : s;
-	};
+	}
 	
-	window['normalDigits'] =
 	function normalDigits(s) {
 		if (!s) return s;
         s = s.toString();
 		for (var i = 0; i <= 9; ++i) s = s.replace(Nd[i], i);
 		return s;
-	};
+	}
 	
-	window['parseUniInt'] =
 	function parseUniInt(s, radix) {
 		return parseInt(s && typeof(s) != 'number' ? normalDigits(normalSpaces(s.toString())) : s, radix);
-	};
+	}
 	
-	window['parseUniFloat'] =
 	function parseUniFloat(s) {
 		return parseFloat(s && typeof(s) != 'number' ? normalDigits(normalSpaces(s.toString())) : s);
-	};
+	}
 	
-	window['sortNumeric'] =
 	function sortNumeric(array) {
 		return array.sort(function(a,b) {
 			var va = parseUniFloat(a), vb = parseUniFloat(b);
 			return isNaN(va) ? -1 : isNaN(vb) ? 1 : va < vb ? -1 : va == vb ? 0 : 1;
 		});
-	};
+	}
+	
+	window['normalSpaces'] = normalSpaces;
+	window['normalDigits'] = normalDigits;
+	window['parseUniInt'] = parseUniInt;
+	window['parseUniFloat'] = parseUniFloat;
+	window['sortNumeric'] = sortNumeric;
     
 })();

@@ -59,3 +59,5 @@ Javascript supports Unicode strings, but parsing such strings to numbers (e.g., 
 </table>
 
 For further information on how these functions are implemented [see here](http://roysharon.com/blog/44).
+
+Using or modifying this project is subject to the [MIT License] (http://creativecommons.org/licenses/MIT/).
