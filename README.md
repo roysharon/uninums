@@ -1,4 +1,4 @@
-Javascript supports Unicode strings, but parsing such strings to numbers (e.g., the user enters a phone number using Chinese numerals) is unsupported. Uninums.js is a small utility script that implements five methods for handling non-ASCII numerals in Javascript:
+Javascript supports Unicode strings, but parsing such strings to numbers (e.g., the user enters a phone number using Chinese numerals) is unsupported. [uninums.js](https://raw.github.com/roysharon/uninums/master/uninums.js) is a small utility script that implements five methods for handling non-ASCII numerals in Javascript:
 
 <table>
 <tbody>
@@ -8,7 +8,7 @@ Javascript supports Unicode strings, but parsing such strings to numbers (e.g., 
 </tr>
 <tr>
 <td>normalDigits(s)</td>
-<td>Normalizes strings by replacing all non-ASCII digits with ASCII digits.<p></p>
+<td>Normalizes a string by replacing all non-ASCII digits with ASCII digits.<p></p>
 <ul>
 <li>normalDigits(‘٠۴६’) == ’046′</li>
 <li>normalDigits(’123′) == ’123′</li>
@@ -17,7 +17,7 @@ Javascript supports Unicode strings, but parsing such strings to numbers (e.g., 
 </tr>
 <tr>
 <td>normalSpaces(s)</td>
-<td>Normalizes string s by replacing all whitespace characters with either a space (‘\x20′) or a newline (‘\n’) as appropriate:<p></p>
+<td>Normalizes a string by replacing all whitespace characters with either a space (‘\x20′) or a newline (‘\n’) as appropriate:<p></p>
 <ul>
 <li>normalSpaces(‘Hello\t\rWorld’) == ‘Hello\x20\nWorld’</li>
 <li>normalSpaces(‘\xA0\u2003′) == ‘\x20\x20′</li>
@@ -27,7 +27,7 @@ Javascript supports Unicode strings, but parsing such strings to numbers (e.g., 
 </tr>
 <tr>
 <td>parseUniInt(s,r)</td>
-<td>Returns the integer value at the start of string s, ignoring leading spaces and using radix r. This is equivalent to the behavior of Javascript’s internal parseInt() function, but also handles non-ASCII digits:<p></p>
+<td>Returns the integer value at the start of a string, ignoring leading spaces and using radix r. This is equivalent to the behavior of Javascript’s internal parseInt() function, but also handles non-ASCII digits:<p></p>
 <ul>
 <li>parseUniInt(‘٠۴६’, 10) == parseInt(’046′, 10) == 46</li>
 <li>parseUniInt(‘٠۴६’) == parseInt(’046′) == 38 // assumes radix=8 due to leading zero</li>
@@ -38,7 +38,7 @@ Javascript supports Unicode strings, but parsing such strings to numbers (e.g., 
 </tr>
 <tr>
 <td>parseUniFloat(s)</td>
-<td>Returns the float value at the start of string s, ignoring leading spaces. This is equivalent to the behavior of Javascript’s internal parseFloat() function, but also handles non-ASCII digits:<p></p>
+<td>Returns the float value at the start of a string, ignoring leading spaces. This is equivalent to the behavior of Javascript’s internal parseFloat() function, but also handles non-ASCII digits:<p></p>
 <ul>
 <li>parseUniFloat(‘٠۴.६’) == parseFloat(’04.6′) == 4.6</li>
 <li>parseUniFloat(‘٠۴.६hello’) == parseFloat(’04.6hello’) == 4.6</li>
@@ -48,7 +48,7 @@ Javascript supports Unicode strings, but parsing such strings to numbers (e.g., 
 </tr>
 <tr>
 <td>sortNumeric(a)</td>
-<td>Sorts array a according to the numeric float values of its items:<p></p>
+<td>Sorts an array according to the numeric float values of its items:<p></p>
 <ul>
 <li>sortNumeric(['3 dogs','10 cats','2 mice']) == ['2 mice','3 dogs','10 cats']</li>
 <li>sortNumeric(['٣ dogs','١٠ cats','٢ mice']) == ['٢ mice','٣ dogs','١٠ cats']</li>
