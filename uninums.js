@@ -29,7 +29,7 @@
 	
 	function normalDigits(s) {
 		if (!s) return s;
-        s = s.toString();
+		s = s.toString();
 		for (var i = 0; i <= 9; ++i) s = s.replace(Nd[i], i);
 		return s;
 	}
