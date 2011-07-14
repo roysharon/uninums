@@ -17,11 +17,11 @@
 		'8\u0668\u06F8\u07C8\u096E\u09EE\u0A6E\u0AEE\u0B6E\u0BEE\u0C6E\u0CEE\u0D6E\u0E58\u0ED8\u0F28\u1048\u1098\u17E8\u1818\u194E\u19D8\u1A88\u1A98\u1B58\u1BB8\u1C48\u1C58\uA628\uA8D8\uA908\uA9D8\uAA58\uABF8\uFF18',
 		'9\u0669\u06F9\u07C9\u096F\u09EF\u0A6F\u0AEF\u0B6F\u0BEF\u0C6F\u0CEF\u0D6F\u0E59\u0ED9\u0F29\u1049\u1099\u17E9\u1819\u194F\u19D9\u1A89\u1A99\u1B59\u1BB9\u1C49\u1C59\uA629\uA8D9\uA909\uA9D9\uAA59\uABF9\uFF19'
 	];
-	for (var i = Nd.length-1; i >= 0; --i) Nd[i] = new RegExp('['+Nd[i]+']', '');
+	for (var i = Nd.length-1; i >= 0; --i) Nd[i] = new RegExp('['+Nd[i]+']', 'g');
 	
-	var Zs_and_friends = new RegExp('[ \t\v\f\u00A0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\uFEFF]', '');
+	var Zs_and_friends = new RegExp('[ \t\v\f\u00A0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\uFEFF]', 'g');
 	
-	var line_terminators = new RegExp('\r\n|[\n\r\u2028\u2029]', '');
+	var line_terminators = new RegExp('\r\n|[\n\r\u2028\u2029]', 'g');
 	
 	function normalSpaces(s) {
 		return s ? s.toString().replace(Zs_and_friends, ' ').replace(line_terminators, '\n') : s;
