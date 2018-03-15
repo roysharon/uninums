@@ -1,6 +1,6 @@
 {
   "name": "@ull-esit-pl/uninums",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unicode Numbers In Javascript http://roysharon.com/blog/44 by Roy Sharon",
   "main": "uninums.js",
   "scripts": {
