@@ -10,7 +10,7 @@ To use it:
 
 ```
 [~/ull-pl1718-campus-virtual/tema2-regexp-y-lexico/src/uninums(master)]$ node
-> uninums = require("uninums");
+> uninums = require("@ull-esit-pl/uninums")
 { normalSpaces: [Function: normalSpaces],
   normalDigits: [Function: normalDigits],
   parseUniInt: [Function: parseUniInt],
