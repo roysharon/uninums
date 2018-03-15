@@ -13,17 +13,28 @@ npm install @ull-esit-pl/uninums
 To use it:
 
 ```
-[~/ull-pl1718-campus-virtual/tema2-regexp-y-lexico/src/uninums(master)]$ node
 > uninums = require("@ull-esit-pl/uninums")
 { normalSpaces: [Function: normalSpaces],
   normalDigits: [Function: normalDigits],
   parseUniInt: [Function: parseUniInt],
   parseUniFloat: [Function: parseUniFloat],
   sortNumeric: [Function: sortNumeric] }
-> uninums.parseUniInt('६६')
-66
-> uninums.parseUniInt('٠۴६')
-46
+> uninums.parseUniInt('६.६')
+6
+> uninums.parseUniFloat('६.६')
+6.6
+> uninums.parseUniFloat('६.६e६')
+6600000
+> uninums.sortNumeric(['٣ dogs','١٠ cats','٢ mice']) 
+[ '٢ mice', '٣ dogs', '١٠ cats' ]
+> uninums.normalDigits('٢ mice')
+'2 mice'
+> uninums.normalDigits('٣ dog')
+'3 dog'
+> uninums.normalDigits('١٠ cats')
+'10 cats'
+> uninums.normalDigits('٠۴६')
+'046'
 ```
 
 ### Blog: [Unicode Numbers In Javascript](http://roysharon.com/blog/44)
