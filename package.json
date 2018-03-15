@@ -1,0 +1,19 @@
+{
+  "name": "@ull-esit-pl/uninums",
+  "version": "1.0.0",
+  "description": "Unicode Numbers In Javascript http://roysharon.com/blog/44 by Roy Sharon",
+  "main": "uninums.js",
+  "scripts": {
+    "test": "open test.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULL-ESIT-PL/uninums.git"
+  },
+  "author": "Casiano Rodriguez-Leon <casiano.rodriguez.leon@gmail.com> (https://github.com/crguezl)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-PL/uninums/issues"
+  },
+  "homepage": "https://github.com/ULL-ESIT-PL/uninums#readme"
+}

@@ -1,3 +1,7 @@
+See also the blog: 
+[Unicode Numbers In Javascript](http://roysharon.com/blog/44)
+Posted on December 1, 2010 by Roy Sharon
+
 Javascript supports Unicode strings, but parsing such strings to numbers is unsupported (e.g., the user enters a phone number using Chinese numerals).  
 [uninums.js](https://raw.github.com/roysharon/uninums/master/uninums.js) is a small utility script that implements five methods for handling non-ASCII numerals in Javascript:
 
