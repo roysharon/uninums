@@ -1,3 +1,7 @@
+## Unicode Numbers In Javascript
+
+[![npm version](https://badge.fury.io/js/%40ull-esit-pl%2Funinums.svg)](https://badge.fury.io/js/%40ull-esit-pl%2Funinums)
+
 ### Instalation and use
 
 To install:
