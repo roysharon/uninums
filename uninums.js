@@ -1,11 +1,10 @@
 // Copyright (c) 2010 Roy Sharon <roy@roysharon.com>
 // See project repositry at <https://github.com/roysharon/uninums>
 // Using this file is subject to the MIT License <http://creativecommons.org/licenses/MIT/>
-
-(function(){
+// Modified 2018 by Casiano <crguezl@ull.edu.es> to use as npm package
 
     // based on Unicode 5.2; does not include code units above 0xFFFF
-    var Nd = [
+    let Nd = [
 		'0\u0660\u06F0\u07C0\u0966\u09E6\u0A66\u0AE6\u0B66\u0BE6\u0C66\u0CE6\u0D66\u0E50\u0ED0\u0F20\u1040\u1090\u17E0\u1810\u1946\u19D0\u1A80\u1A90\u1B50\u1BB0\u1C40\u1C50\uA620\uA8D0\uA900\uA9D0\uAA50\uABF0\uFF10',
 		'1\u0661\u06F1\u07C1\u0967\u09E7\u0A67\u0AE7\u0B67\u0BE7\u0C67\u0CE7\u0D67\u0E51\u0ED1\u0F21\u1041\u1091\u17E1\u1811\u1947\u19D1\u19DA\u1A81\u1A91\u1B51\u1BB1\u1C41\u1C51\uA621\uA8D1\uA901\uA9D1\uAA51\uABF1\uFF11',
 		'2\u0662\u06F2\u07C2\u0968\u09E8\u0A68\u0AE8\u0B68\u0BE8\u0C68\u0CE8\u0D68\u0E52\u0ED2\u0F22\u1042\u1092\u17E2\u1812\u1948\u19D2\u1A82\u1A92\u1B52\u1BB2\u1C42\u1C52\uA622\uA8D2\uA902\uA9D2\uAA52\uABF2\uFF12',
@@ -17,11 +16,11 @@
 		'8\u0668\u06F8\u07C8\u096E\u09EE\u0A6E\u0AEE\u0B6E\u0BEE\u0C6E\u0CEE\u0D6E\u0E58\u0ED8\u0F28\u1048\u1098\u17E8\u1818\u194E\u19D8\u1A88\u1A98\u1B58\u1BB8\u1C48\u1C58\uA628\uA8D8\uA908\uA9D8\uAA58\uABF8\uFF18',
 		'9\u0669\u06F9\u07C9\u096F\u09EF\u0A6F\u0AEF\u0B6F\u0BEF\u0C6F\u0CEF\u0D6F\u0E59\u0ED9\u0F29\u1049\u1099\u17E9\u1819\u194F\u19D9\u1A89\u1A99\u1B59\u1BB9\u1C49\u1C59\uA629\uA8D9\uA909\uA9D9\uAA59\uABF9\uFF19'
 	];
-	for (var i = Nd.length-1; i >= 0; --i) Nd[i] = new RegExp('['+Nd[i]+']', 'g');
+	for (let i = Nd.length-1; i >= 0; --i) Nd[i] = new RegExp('['+Nd[i]+']', 'g');
 	
-	var Zs_and_friends = new RegExp('[ \t\v\f\u00A0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\uFEFF]', 'g');
+	let Zs_and_friends = new RegExp('[ \t\v\f\u00A0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\uFEFF]', 'g');
 	
-	var line_terminators = new RegExp('\r\n|[\n\r\u2028\u2029]', 'g');
+	let line_terminators = new RegExp('\r\n|[\n\r\u2028\u2029]', 'g');
 	
 	function normalSpaces(s) {
 		return s ? s.toString().replace(Zs_and_friends, ' ').replace(line_terminators, '\n') : s;
@@ -30,7 +29,7 @@
 	function normalDigits(s) {
 		if (!s) return s;
 		s = s.toString();
-		for (var i = 0; i <= 9; ++i) s = s.replace(Nd[i], i);
+		for (let i = 0; i <= 9; ++i) s = s.replace(Nd[i], i);
 		return s;
 	}
 	
@@ -44,15 +43,15 @@
 	
 	function sortNumeric(array) {
 		return array.sort(function(a,b) {
-			var va = parseUniFloat(a), vb = parseUniFloat(b);
+			let va = parseUniFloat(a), vb = parseUniFloat(b);
 			return isNaN(va) ? -1 : isNaN(vb) ? 1 : va < vb ? -1 : va == vb ? 0 : 1;
 		});
 	}
 	
-	window['normalSpaces'] = normalSpaces;
-	window['normalDigits'] = normalDigits;
-	window['parseUniInt'] = parseUniInt;
-	window['parseUniFloat'] = parseUniFloat;
-	window['sortNumeric'] = sortNumeric;
-    
-})();
+module.exports = {
+ normalSpaces,
+ normalDigits,
+ parseUniInt,
+ parseUniFloat,
+ sortNumeric,
+};

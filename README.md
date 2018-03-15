@@ -1,6 +1,33 @@
+### Instalation and use
+
+To install:
+
+```
+npm install @ull-esit-pl/uninums
+```
+
+To use it:
+
+```
+[~/ull-pl1718-campus-virtual/tema2-regexp-y-lexico/src/uninums(master)]$ node
+> uninums = require("uninums");
+{ normalSpaces: [Function: normalSpaces],
+  normalDigits: [Function: normalDigits],
+  parseUniInt: [Function: parseUniInt],
+  parseUniFloat: [Function: parseUniFloat],
+  sortNumeric: [Function: sortNumeric] }
+> uninums.parseUniInt('६६')
+66
+> uninums.parseUniInt('٠۴६')
+46
+```
+
+### Blog: [Unicode Numbers In Javascript](http://roysharon.com/blog/44)
 See also the blog: 
 [Unicode Numbers In Javascript](http://roysharon.com/blog/44)
 Posted on December 1, 2010 by Roy Sharon
+
+### Description
 
 Javascript supports Unicode strings, but parsing such strings to numbers is unsupported (e.g., the user enters a phone number using Chinese numerals).  
 [uninums.js](https://raw.github.com/roysharon/uninums/master/uninums.js) is a small utility script that implements five methods for handling non-ASCII numerals in Javascript:
