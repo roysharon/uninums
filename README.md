@@ -1,3 +1,49 @@
+## Unicode Numbers In Javascript
+
+[![npm version](https://badge.fury.io/js/%40ull-esit-pl%2Funinums.svg)](https://badge.fury.io/js/%40ull-esit-pl%2Funinums)
+
+### Instalation and use
+
+To install:
+
+```
+npm install @ull-esit-pl/uninums
+```
+
+To use it:
+
+```
+> uninums = require("@ull-esit-pl/uninums")
+{ normalSpaces: [Function: normalSpaces],
+  normalDigits: [Function: normalDigits],
+  parseUniInt: [Function: parseUniInt],
+  parseUniFloat: [Function: parseUniFloat],
+  sortNumeric: [Function: sortNumeric] }
+> uninums.parseUniInt('६.६')
+6
+> uninums.parseUniFloat('६.६')
+6.6
+> uninums.parseUniFloat('६.६e६')
+6600000
+> uninums.sortNumeric(['٣ dogs','١٠ cats','٢ mice']) 
+[ '٢ mice', '٣ dogs', '١٠ cats' ]
+> uninums.normalDigits('٢ mice')
+'2 mice'
+> uninums.normalDigits('٣ dog')
+'3 dog'
+> uninums.normalDigits('١٠ cats')
+'10 cats'
+> uninums.normalDigits('٠۴६')
+'046'
+```
+
+### Blog: [Unicode Numbers In Javascript](http://roysharon.com/blog/44)
+See also the blog: 
+[Unicode Numbers In Javascript](http://roysharon.com/blog/44)
+Posted on December 1, 2010 by Roy Sharon
+
+### Description
+
 Javascript supports Unicode strings, but parsing such strings to numbers is unsupported (e.g., the user enters a phone number using Chinese numerals).  
 [uninums.js](https://raw.github.com/roysharon/uninums/master/uninums.js) is a small utility script that implements five methods for handling non-ASCII numerals in Javascript:
 
